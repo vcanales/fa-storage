@@ -10,14 +10,14 @@ var storagePrototype = {
     },
     setItem: function setItem(key, value) {
         this[key] = value;
-        this.length = this.length + 1;
+        this.length += 1;
     },
     getItem: function getItem(key) {
         if (typeof this[key] === 'undefined') return null;
     },
     removeItem: function removeItem(key) {
         delete this[key];
-        this.length = this.length - 1;
+        this.length -= 1;
     }
 };
 
