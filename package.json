@@ -1,0 +1,29 @@
+{
+  "name": "fake-storage",
+  "version": "1.0.0",
+  "description": "a library to mock session/local storage in case which is not available",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "webpack --watch",
+    "build:prod": "webpack -p",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aether7/fake-storage.git"
+  },
+  "keywords": [
+    "fake",
+    "storage",
+    "browser"
+  ],
+  "author": "aether7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aether7/fake-storage/issues"
+  },
+  "homepage": "https://github.com/aether7/fake-storage#readme",
+  "devDependencies": {
+    "webpack": "^3.4.1"
+  }
+}

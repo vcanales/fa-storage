@@ -1,36 +1,29 @@
-//IN-memory storage
-var storagePrototype = {
-    clear: function clear() {
-        Object.keys(this).forEach(this.removeItem.bind(this));
-        this.length = 0;
-    },
-    key: function key(index) {
-        var properties = Object.keys(this);
-        return properties[index];
-    },
-    setItem: function setItem(key, value) {
-        this[key] = value;
-        this.length += 1;
-    },
-    getItem: function getItem(key) {
-        if (typeof this[key] === 'undefined') return null;
-    },
-    removeItem: function removeItem(key) {
-        delete this[key];
-        this.length -= 1;
+(function moduleWrapper(factory, context) {
+  if (typeof exports !== 'undefined') {
+    module.exports = factory(context);
+  } else {
+    context.fakeStorage = factory(context);
+  }
+})(function innerFactory(context) {
+  var cookieEnabled = typeof context.document !== 'undefined';
+  var myLocalStorage = context.localStorage;
+  var mySessionStorage = context.sessionStorage;
+
+  try {
+    myLocalStorage.setItem('foobarquax', 'foobarquax');
+    myLocalStorage.removeItem('foobarquax');
+  } catch (err) {
+    if (cookieEnabled) {
+      myLocalStorage = require('./src/cookie')(100, 'local');
+      mySessionStorage = require('./src/cookie')(0, 'session');
+    } else {
+      myLocalStorage = require('./src/memory')();
+      mySessionStorage = require('./src/memory')();
     }
-};
+  }
 
-var myStorage = Object.create(storagePrototype, {
-    length: {
-        writable: true,
-        value: 0,
-        enumerable: false
-    }
-});
-
-
-myStorage.setItem('nigga', true);
-
-
-console.log(myStorage);
+  return {
+    localStorage: myLocalStorage,
+    sessionStorage: mySessionStorage
+  };
+}, typeof window !== 'undefined' ? window : global);
