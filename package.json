@@ -1,5 +1,5 @@
 {
-  "name": "fake-storage",
+  "name": "fa-storage",
   "version": "1.0.0",
   "description": "a library to mock session/local storage in case which is not available",
   "main": "index.js",
