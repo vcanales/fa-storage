@@ -1,4 +1,5 @@
 const path = require('path');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function(env) {
   return {
@@ -8,6 +9,11 @@ module.exports = function(env) {
     output: {
       path: path.join(__dirname, 'dist'),
       filename: '[name].js'
-    }
+    },
+    plugins: [new htmlWebpackPlugin({
+      title: 'Example',
+      inject: 'head',
+      template: './src/example/index.html'
+    })]
   };
 };
