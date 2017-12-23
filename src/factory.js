@@ -1,4 +1,4 @@
-function factory(contex)t {
+function factory(context) {
   var myLocalStorage = context.localStorage;
   var mySessionStorage = context.sessionStorage;
   var cookieEnabled = typeof context.document !== 'undefined';
@@ -23,3 +23,5 @@ function factory(contex)t {
     sessionStorage: mySessionStorage
   };
 }
+
+module.exports = factory;
