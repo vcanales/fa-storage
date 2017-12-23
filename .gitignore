@@ -1,5 +1,3 @@
 node_modules/
 dist/
-*.html
-!src/example/index.html
 coverage/
