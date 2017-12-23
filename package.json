@@ -4,8 +4,6 @@
   "description": "a library to mock session/local storage in case which is not available",
   "main": "index.js",
   "scripts": {
-    "build:dev": "webpack --watch",
-    "build:prod": "webpack -p",
     "test": "jest . --coverage"
   },
   "repository": {
@@ -28,7 +26,6 @@
     "npm": ">= 5.0.0"
   },
   "devDependencies": {
-    "jest": "^22.0.3",
-    "webpack": "^3.4.1"
+    "jest": "^22.0.3"
   }
 }
